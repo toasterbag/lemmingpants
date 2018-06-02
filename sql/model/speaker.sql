@@ -19,7 +19,7 @@ CREATE UNIQUE INDEX ON speaker (speaker_queue_id, state) where state='active';
 -- At most one speaker per queue may be init or active at the same time.
 CREATE UNIQUE INDEX ON speaker (speaker_queue_id, attendee_id) where state IN ('active', 'init');
 
-GRANT USAGE ON SEQUENCE speaker_id_seq TO admin_user;
+GRANT USAGE ON SEQUENCE speaker_id_seq TO admin_user, authorized_attendee;
 
 -- This is used to determine the order of the speakers.
 -- It lets us have an infinite number of speakers queues.

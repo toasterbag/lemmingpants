@@ -2,8 +2,6 @@ SET SCHEMA 'api';
 
 -- Public facing auth functions ---------------------------------------------
 
-CREATE TYPE jwt_token AS (token TEXT);
-
 CREATE FUNCTION api.login(username TEXT, password TEXT) RETURNS jwt_token
     LANGUAGE sql SECURITY DEFINER SET search_path = api, model, public, pg_temp
     AS $$

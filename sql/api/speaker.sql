@@ -1,12 +1,10 @@
 SET SCHEMA 'api';
 
 CREATE VIEW speaker AS
-    SELECT * FROM model.speaker;
+    SELECT * FROM model.speaker
+    WITH CASCADED CHECK OPTION;
 
 GRANT SELECT ON speaker TO read_access;
-GRANT INSERT (speaker_queue_id, attendee_id, state) ON speaker TO admin_user, authorized_attendee;
-GRANT UPDATE (state) ON speaker TO admin_user;
-GRANT REFERENCES ON speaker TO admin_user;
 
 CREATE VIEW active_speakers AS
     SELECT * FROM model.active_speakers;
